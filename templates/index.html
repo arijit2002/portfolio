@@ -69,7 +69,7 @@
         <h3><span>languages : </span> 
             <ul><li>Java, Python</li><li>SQL</li><li>HTML, CSS, JS [basic]</li></ul>
             </h3> <br><br>
-        <a href="#"><button class="btn"> view CV <i class="fas fa-file"></i> </button></a>
+        <a href="https://drive.google.com/file/d/1sUaHQmWpTw1cQGXHVNfKT-xqurUImlYn/view?usp=sharing" target="_blank"><button class="btn"> view CV <i class="fas fa-file"></i> </button></a>
     </div>
 
     <div class="counter">
@@ -260,17 +260,40 @@ Year :  2nd
     </form>
 
 </div>
-
+<footer>
+    <a href="#home" class="top">                    <!-- scroll top button  -->
+        <i class="fas fa-arrow-circle-up"></i>
+    </a>
+    <h1 style="color: rgb(214, 230, 245);">© 2022 @ Arijit Das. All rights reserved.<h1>
+</footer>
 </section>
 
 <!-- contact section ends -->
 
+<script type="text/javascript">
+    document.addEventListener("contextmenu",function(test){
+        test.preventDefault();
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && 
+            (e.keyCode === 67 ||
+             e.keyCode === 16 ||
+             e.keyCode === 80 || 
+             e.keyCode === 86 || 
+             e.keyCode === 85 || 
+             e.keyCode === 117)) {
+            return false;
+        }
+        else if(e.keyCode === 123){
+            return false;
+        } 
+        else {
+            return true;
+        }
+        };
+    
+    })   
+    </script>
 
-<!-- scroll top button  -->
-
-    <a href="#home" class="top">
-        <i class="fas fa-arrow-circle-up"></i>
-    </a>
 <!-- jquery cdn link  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
