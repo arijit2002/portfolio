@@ -1,6 +1,5 @@
 Flask==2.0.1
 pymongo==4.0.1
-python-dotenv==0.19.2
 click==8.0.3
 colorama==0.4.4
 cycler==0.10.0
