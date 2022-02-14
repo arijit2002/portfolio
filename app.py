@@ -2,12 +2,14 @@ import pymongo
 from flask import Flask,render_template, request,make_response
 from dotenv import load_dotenv
 import os
+import smtplib
+from email.mime.text import MIMEText
 
 load_dotenv()
 
-user = os.getenv("user")
+fromAddr = os.getenv("fromAddr")
 pswd = os.getenv("pswd")
-database = os.getenv("database")
+toAddr = os.getenv("toAddr")
 
 app=Flask(__name__)
 
@@ -18,16 +20,28 @@ def index():
 
 @app.route('/form',methods=['POST','GET'])
 def form():
-    myclient = pymongo.MongoClient(f"mongodb+srv://{user}:{pswd}@{database}.gjpbh.mongodb.net/test?retryWrites=true&w=majority")
-    mydb = myclient["test"]
-    mycol = mydb["portfolio"]
     name=request.form.get('name')
     email=request.form.get('email')
     subject=request.form.get('subject')
     message=request.form.get('message')
-    print(name,email,subject,message)
-    list={"name":name,"email":email,"subject":subject,"message":message}
-    mycol.insert_one(list)
+
+    msg=MIMEText(message)
+    fromAddr="portfolio.arijitdas@gmail.com"
+    toAddr="portfolio.arijitdas@gmail.com"
+
+    msg['From']=fromAddr
+    msg['To']=toAddr
+    msg['Subject']=subject
+
+    server=smtplib.SMTP("smtp.gmail.com",587) #587 is the gmail port number
+
+    #put the smtp connection in TLS mode
+    server.starttls()
+    server.login(fromAddr, 'portfolio10*')
+    server.send_message(msg)
+    print("Mail sent")
+    server.quit()
+    
     return render_template('index.html')
 
 
