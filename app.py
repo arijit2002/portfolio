@@ -3,11 +3,6 @@ from flask import Flask,render_template, request,make_response
 import smtplib
 from email.mime.text import MIMEText
 
-load_dotenv()
-
-fromAddr = os.getenv("fromAddr")
-pswd = os.getenv("pswd")
-toAddr = os.getenv("toAddr")
 
 app=Flask(__name__)
 
@@ -22,11 +17,13 @@ def form():
     email=request.form.get('email')
     subject=request.form.get('subject')
     message=request.form.get('message')
-
-    msg=MIMEText(message)
+    
+    modified="Email of Sender: "+email+"\n"+message
+    
+    msg=MIMEText(modified)
     fromAddr="portfolio.arijitdas@gmail.com"
     toAddr="portfolio.arijitdas@gmail.com"
-
+    
     msg['From']=fromAddr
     msg['To']=toAddr
     msg['Subject']=subject
