@@ -1,7 +1,5 @@
 import pymongo
 from flask import Flask,render_template, request,make_response
-from dotenv import load_dotenv
-import os
 import smtplib
 from email.mime.text import MIMEText
 
