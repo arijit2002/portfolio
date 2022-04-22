@@ -21,8 +21,8 @@ def form():
     modified="Email of Sender: "+email+"\n"+message
     
     msg=MIMEText(modified)
-    fromAddr="portfolio.arijitdas@gmail.com"
-    toAddr="portfolio.arijitdas@gmail.com"
+    fromAddr="sender_mail"
+    toAddr="receiver_mail"
     
     msg['From']=fromAddr
     msg['To']=toAddr
@@ -32,7 +32,7 @@ def form():
 
     #put the smtp connection in TLS mode
     server.starttls()
-    server.login(fromAddr, 'portfolio10*')
+    server.login(fromAddr, 'pswd')
     server.send_message(msg)
     print("Mail sent")
     server.quit()
