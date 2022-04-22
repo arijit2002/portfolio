@@ -28,14 +28,15 @@ def form():
     msg['To']=toAddr
     msg['Subject']=subject
 
-    server=smtplib.SMTP("smtp.gmail.com",587) #587 is the gmail port number
+    server=smtplib.SMTP("smtp.gmail.com",587) #587 is the gmail port number 
 
     #put the smtp connection in TLS mode
     server.starttls()
-    server.login(fromAddr, 'pswd')
+    server.login(fromAddr, 'pswd') 
     server.send_message(msg)
     print("Mail sent")
     server.quit()
+    #close the server before exiting
     
     return render_template('index.html')
 
